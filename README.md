@@ -1,5 +1,6 @@
 
-# Form Builder Library v0.0.1
+# Form Builder Library v0.0.2
+There CSS Framework Support
 
 @jeevanlal
 
@@ -30,12 +31,15 @@ $config['all'] = [
 
 
 $config['login'] = [
-    'theme' => 'bootstrap3', // bootstrap4, semantic2
+    'theme' => $theme, // bootstrap3, bootstrap4, semantic2
     'class' => TRUE,
     'name' => TRUE,
     'id' => TRUE,
     'placeholder' => TRUE,
     'required' => TRUE,
+    // 'group' => False, // by default TRUE
+    // 'error_class' => False, // by default TRUE
+    // 'error_text' => False, // by default TRUE
     'label' => [
         'class' => TRUE,
         'for' => TRUE,
@@ -75,13 +79,15 @@ $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div
 2. password
 3. number
 4. textarea
+5. file
 
 ```php
 
 $this->form_builder->text([
     'name' => 'username',
-    'type' => 'password', // hidden, password
+    // 'type' => 'textarea',
     'value' => set_value('username'),
+    // 'class' => '',
     'error_class' => false, // by default TRUE
     'error_text' => false, // by default TRUE
     'id' => 'field_id',
@@ -90,9 +96,16 @@ $this->form_builder->text([
     'size'   => '50',
     'style'  => 'width:50%',
     'required' => true,
+    // 'group' => false, // by default true
+    // 'disabled' => true, // by default false
     'label' => [
         'class'=> 'label', 
         'text' => 'Article Title'
+    ],
+    'help' => [
+        // 'class' => 'text-danger',
+        'text' => 'Field Help Text',
+        // 'style' => 'background-color:red;',
     ],
     'other' => [
         'onClick' => "alert('Jeevan');"
@@ -120,5 +133,122 @@ $this->form_builder->select([
     'other' => [
         //  'onClick' => "alert('Jeevan');"
     ],
+]);
+```
+
+
+### Checkbox
+
+1. Single Checkbox
+
+```php
+$this->form_builder->checkbox([
+    'name' => 'accept_terms_checkbox',
+    'text' => 'Please Select Check Box',
+    'id'  => 'newsletter',
+    'value'   => '1',
+    // 'style'   => 'margin:10px'
+    'other' => [
+        //  'onClick' => "alert('Jeevan');"
+    ],
+]);
+```
+
+2. Multi Checkbox
+
+```php
+$this->form_builder->checkbox([
+    'name' => 'multi_checkbox[]',
+    'text' => 'Hindi',
+    'id'  => 'newsletter',
+    'value'   => '1',
+    // 'style'   => 'margin:10px',
+    'inline' => true,
+    // 'group' => false,
+    'error_text' => false, // by default TRUE
+    // 'disabled' => true, // by default false
+    'other' => [
+        //  'onClick' => "alert('Jeevan');"
+    ],
+]);
+
+$this->form_builder->checkbox([
+    'name' => 'multi_checkbox[]',
+    'text' => 'English',
+    'id'  => 'newsletter',
+    'value'   => '2',
+    'inline' => true,
+    // 'group' => false, 
+    // 'style'   => 'margin:10px'
+    'other' => [
+        //  'onClick' => "alert('Jeevan');"
+    ],
+]);
+```
+
+
+
+### Radio
+
+```php
+$this->form_builder->radio([
+    'name' => 'radio',
+    'text' => 'Male',
+    'id'  => 'newsletter',
+    'value'   => 'Male',
+    // 'style'   => 'margin:10px'
+    'error_text' => false, // by default TRUE
+    // 'inline' => true,
+    // 'group' => false,
+    'other' => [
+        //  'onClick' => "alert('Jeevan');"
+    ],
+]);
+
+$this->form_builder->radio([
+    'name' => 'radio',
+    'text' => 'Female',
+    'id'  => 'newsletter',
+    'value'   => 'Female',
+    // 'inline' => true,
+    // 'group' => false,
+    // 'style'   => 'margin:10px',
+    // 'disabled' => true, // by default false
+    'other' => [
+        //  'onClick' => "alert('Jeevan');"
+    ],
+]);
+```
+
+### Submit and Reset Button
+
+```php
+$this->form_builder->submit([
+    'name' => 'submit_name',
+    'id' => 'submit_id',
+    // 'type' => 'reset', // submit and reset by default submit
+    'value' => 'Login',
+    'class' => 'btn btn-info btn-lg btn-block',
+    'style'  => 'margin-bottom: 8px;',
+    // 'disabled' => true, // by default false
+    'other' => [
+        // 'onClick' => "alert('Jeevan');"
+    ]
+]);
+```
+
+### Button
+
+```php
+$this->form_builder->button([
+    'name' => 'submit_name',
+    'id' => 'submit_id',
+    'value' => '<i class="fa fa-image"></i> Button',
+    'class' => 'btn btn-warning btn-lg btn-block',
+    'style'  => 'margin-bottom: 8px;',
+    // 'disabled' => true, // by default false
+    'other' => [
+        // 'onClick' => "alert('Jeevan');"
+    ]
 ]);
 ```

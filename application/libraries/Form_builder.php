@@ -10,7 +10,7 @@
  * 
  * @package  : CodeIgniter
  * @author   : jeevan lal
- * @version  : 0.0.1
+ * @version  : 0.0.2
  * @link     : 
  * @license  : Open Source License
  *  
@@ -47,6 +47,8 @@ class Form_builder {
             // inline radio and checkbox
             'inline_checkbox_label_class' => 'checkbox-inline',
             'inline_radio_label_class' => 'radio-inline',
+            // submit and reset button class
+            'submit_class' => 'btn btn-default'
         ],
 
         'bootstrap4' => [
@@ -64,6 +66,8 @@ class Form_builder {
             'check_input_class' => 'form-check-input',
             // field help text
             'help_text_class' => 'form-text text-muted',
+            // submit and reset button class
+            'submit_class' => 'btn btn-default'
         ],
 
         'semantic2' => [
@@ -78,6 +82,8 @@ class Form_builder {
             'check_input_class' => '',
             // field help text
             'help_text_class' => '',
+            // submit and reset button class
+            'submit_class' => 'ui default button'
         ]
     ];
     
@@ -115,6 +121,13 @@ class Form_builder {
     protected $radio_class_exists = true;
     protected $radio_name_exists = true;
     protected $radio_id_exists = true;
+
+    /**
+     * Submit Button Settings
+     */
+    protected $submit_class_exists = true;
+    protected $submit_id_exists = true;
+    protected $submit_name_exists = true;
     
     /**
      * Field Help Text Settings
@@ -347,6 +360,40 @@ class Form_builder {
         $radio .= $this->field_group_end($param);
         $radio .= $this->field_error_text($param);
         echo $radio;
+    }
+
+    /**
+     * Form Submit and Reset Button
+     * @param: field data in array
+     */
+    public function submit(array $param)
+    {
+        $submit = '';
+
+        /**
+         * Set Field Properties this function
+         */
+        $submit_param = $this->set_property_submit($param);
+        $submit .= form_submit($submit_param['submit_data'], $submit_param['submit_value'], $submit_param['other_data']);
+
+        echo $submit;
+    }
+
+    /**
+     * Button
+     * @param: field data in array
+     */
+    public function button(array $param)
+    {
+        $button = '';
+
+        /**
+         * Set Field Properties this function
+         */
+        $button_param = $this->set_property_submit($param);
+        $button .= form_button($button_param['submit_data'], $button_param['submit_value'], $button_param['other_data']);
+
+        echo $button;
     }
 
     /**
@@ -890,6 +937,7 @@ class Form_builder {
      * 5. Style
      * 6. Checked (boolean)
      * 7. Other
+     * 8. Disabled
      */
     private function set_property_radio(array $param)
     {
@@ -998,6 +1046,114 @@ class Form_builder {
             'radio_data'    => $radio_data,
             'radio_value'   => @$radio_value,
             'checked'       => @$checked,
+            'other_data'    => $other_data,
+        ];
+    }
+
+    /**
+     * Submit Field Set Properties
+     * @param: field data
+     * @return: array()
+     * --------------------
+     * 1. Value
+     * 2. Class
+     * 3. Name
+     * 4. ID
+     * 5. Style
+     * 6. Other
+     * 7. Disabled
+     * 8. Type
+     */
+    private function set_property_submit(array $param)
+    {
+        $submit_data = [];
+        $other_data  = [];
+
+        /**
+         * Submit Value
+         */
+        if(isset($param['value'])) 
+        {
+            $submit_value = $param['value'];
+        }else
+        {
+            if(isset($param['type']) AND $param['type'] == 'reset')
+                $submit_value = 'Reset';
+            else
+                $submit_value = 'Submit';
+        }
+
+        /**
+         * Submit Class
+         */
+        $submit_class  = '';
+        if($this->submit_class_exists)
+        {
+            if(!isset($param['class']))
+                $submit_class = $this->theme_templates[$this->theme]['submit_class'];
+            else
+                $submit_class = $param['class'];
+
+            // insert class
+            $submit_data['class'] = $submit_class;
+        }
+
+        /**
+         * Submit Name
+         */
+        $submit_name  = '';
+        if($this->submit_name_exists)
+        {
+            if(isset($param['name']))
+                $submit_name = $param['name'];
+            
+            // Insert Data in Name
+            $submit_data['name'] = $submit_name;
+        }
+
+        /**
+         * Submit ID
+         */
+        $submit_id  = '';
+        if($this->submit_id_exists)
+        {
+            if(isset($param['id']))
+            {
+                $submit_id = $param['id'];
+                
+                // Insert Data in ID
+                $submit_data['id'] = $submit_id;
+            }
+        }
+
+         /**
+         * Submit style
+         */
+        if(isset($param['style']))
+            $submit_data['style'] = $param['style'];
+
+        
+        /**
+         * Submit Other Elements with Value
+         */
+        if(isset($param['other']))
+            $other_data = $param['other'];
+        
+        /**
+         * Submit Disabled
+         */
+        if(isset($param['disabled']) AND $param['disabled'] === TRUE)
+            $submit_data['disabled'] = "disabled";
+        
+        /**
+         * Submit Type
+         */
+        if(isset($param['type']))
+            $submit_data['type'] = $param['type'];
+
+        return [
+            'submit_data'   => $submit_data,
+            'submit_value'  => @$submit_value,
             'other_data'    => $other_data,
         ];
     }

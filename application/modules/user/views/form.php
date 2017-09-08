@@ -15,12 +15,13 @@
       <?= form_open('', ['class' => 'ui form']) ?>
         <?php
           $this->form_builder->text([
-            'name' => 'username',
+            'name' => 'submit',
             // 'type' => 'textarea', // hidden, textarea, password, file
             'value' => set_value('username'),
             // 'error_class' => false, // by default TRUE
             // 'error_text' => false, // by default TRUE
             'id' => 'field_id',
+            // 'class' => '',
             'placeholder' => 'Field Placeholder',
             // 'maxlength' => 50,
             // 'size'   => '50',
@@ -174,10 +175,46 @@
               // 'onClick' => "alert('Jeevan');"
             ]
           ]);
+
+          $this->form_builder->submit([
+            'name' => 'submit_name',
+            'id' => 'submit_id',
+            // 'type' => 'reset', // submit and reset by default submit
+            'value' => 'Login',
+            // 'class' => 'btn btn-info btn-lg btn-block',
+            'style'  => 'margin-bottom: 8px;',
+            // 'disabled' => true, // by default false
+            'other' => [
+              // 'onClick' => "alert('Jeevan');"
+            ]
+          ]);
+
+          $this->form_builder->submit([
+            'name' => 'submit_name',
+            'id' => 'submit_id',
+            'type' => 'reset', // submit and reset by default submit
+            // 'value' => 'Login',
+            // 'class' => 'btn btn-outline-danger btn-block',
+            'style'  => 'margin-bottom: 8px;',
+            // 'disabled' => true, // by default false
+            'other' => [
+              // 'onClick' => "alert('Jeevan');"
+            ]
+          ]);
+
+          $this->form_builder->button([
+            'name' => 'submit_name',
+            'id' => 'submit_id',
+            'value' => '<i class="fa fa-image"></i> Button',
+            // 'class' => 'btn btn-warning btn-lg btn-block',
+            'style'  => 'margin-bottom: 8px;',
+            // 'disabled' => true, // by default false
+            'other' => [
+              // 'onClick' => "alert('Jeevan');"
+            ]
+          ]);
         ?>
-        
     
-        <button type="submit" class="btn btn-outline-info btn-block">Login</button>
       <?= form_close() ?>
       <br>
       <br>
