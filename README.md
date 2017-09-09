@@ -4,6 +4,27 @@ There CSS Framework Support
 
 @jeevanlal
 
+> ## Features
+
+### Bootstrap 4
+
+* All Form Components supported
+*  **Form inline** support
+
+----------
+
+### Bootstrap 3
+
+* All Form Components supported
+* **Form inline** support
+
+----------
+
+### Semantic 2
+
+*  All Form Components supported
+
+----------
 
 ## Thems
 
@@ -14,7 +35,7 @@ There CSS Framework Support
 | semantic2     | Semantic v2.2.13 |
 
 
-## Form Builder Config File
+> ## Form Builder Config File
 
 By default use config key ```all```
 
@@ -52,7 +73,7 @@ $config['set_other_settings_keys'] = [];
 
 
 
-## Use Config Keys in Library
+> ## Use Config Keys in Library
 
 ```php
 // by default set config item array (all)
@@ -62,14 +83,14 @@ $this->load->library('form_builder');
 $this->load->library('form_builder', 'login');
 ```
 
-## Set validation error template
+> ## Set validation error template
 
 ```php
 // bootstrap4 and bootstrap3
 $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
 ```
 
-## Form Builder Elements
+> ## Form Builder Elements
 
 ### Input and Textarea
 
@@ -252,3 +273,5 @@ $this->form_builder->button([
     ]
 ]);
 ```
+
+![](http://)

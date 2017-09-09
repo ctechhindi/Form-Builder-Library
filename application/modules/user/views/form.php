@@ -15,7 +15,7 @@
       <?= form_open('', ['class' => 'ui form']) ?>
         <?php
           $this->form_builder->text([
-            'name' => 'submit',
+            'name' => 'username',
             // 'type' => 'textarea', // hidden, textarea, password, file
             'value' => set_value('username'),
             // 'error_class' => false, // by default TRUE
