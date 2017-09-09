@@ -4,25 +4,43 @@ There CSS Framework Support
 
 @jeevanlal
 
-> ## Features
+## Features
 
 ### Bootstrap 4
 
 * All Form Components supported
+* Field **Group** and **Label** Disable and Enable
+* Server **Form Validation Erros** Show
+* Field **Help Text** supported
+* Field **Required** supported
+* Field **Disabled** supported
 *  **Form inline** support
+* Use user define element like ```onClick```
 
 ----------
 
 ### Bootstrap 3
 
 * All Form Components supported
-* **Form inline** support
+* Field **Group** and **Label** Disable and Enable
+* Server **Form Validation Erros** Show
+* Field **Help Text** supported
+* Field **Required** supported
+* Field **Disabled** supported
+*  **Form inline** support
+* Use user define element like ```onClick```
 
 ----------
 
 ### Semantic 2
 
-*  All Form Components supported
+* All Form Components supported
+* Field **Group** and **Label** Disable and Enable
+* Server **Form Validation Erros** Show
+* Field **Help Text** supported
+* Field **Required** supported
+* Field **Disabled** supported
+* Use user define element like ```onClick```
 
 ----------
 
@@ -35,7 +53,7 @@ There CSS Framework Support
 | semantic2     | Semantic v2.2.13 |
 
 
-> ## Form Builder Config File
+## Form Builder Config File
 
 By default use config key ```all```
 
@@ -73,7 +91,7 @@ $config['set_other_settings_keys'] = [];
 
 
 
-> ## Use Config Keys in Library
+## Use Config Keys in Library
 
 ```php
 // by default set config item array (all)
@@ -83,7 +101,7 @@ $this->load->library('form_builder');
 $this->load->library('form_builder', 'login');
 ```
 
-> ## Set validation error template
+## Set validation error template
 
 ```php
 // bootstrap4 and bootstrap3
@@ -91,7 +109,7 @@ $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div
 ```
 
 
-> ## Form Builder Elements
+## Form Builder Elements
 
 ### Input and Textarea
 
